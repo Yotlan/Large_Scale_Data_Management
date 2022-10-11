@@ -91,7 +91,7 @@ if __name__ == "__main__":
         
         execution_time = time() - start_time
         report=f'{iteration},{execution_time}\n'
-        with open(str(sys.argv[3]), 'w') as measures_file:
+        with open(str(sys.argv[3]), 'a') as measures_file:
             measures_file.write(report)
 
     # Collects all URL ranks and dump them to console.
