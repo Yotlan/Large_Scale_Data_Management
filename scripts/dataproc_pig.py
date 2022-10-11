@@ -3,59 +3,61 @@ from org.apache.pig.scripting import *
 
 import sys
 
-INIT = Pig.compile("""
-A = LOAD 'gs://public_lddm_data/small_page_links.nt' using PigStorage(' ') as (url:chararray, p:chararray, link:chararray);
-B = GROUP A by url;                                                                                  
-C = foreach B generate group as url, 1 as pagerank, A.link as links;                                 
-STORE C into '$docs_in';
-""")
+if __name__ == "__main__":
 
-UPDATE = Pig.compile("""
--- PR(A) = (1-d) + d (PR(T1)/C(T1) + ... + PR(Tn)/C(Tn))
+    INIT = Pig.compile("""
+    A = LOAD 'gs://public_lddm_data/small_page_links.nt' using PigStorage(' ') as (url:chararray, p:chararray, link:chararray);
+    B = GROUP A by url;                                                                                  
+    C = foreach B generate group as url, 1 as pagerank, A.link as links;                                 
+    STORE C into '$docs_in';
+    """)
 
-previous_pagerank = 
-    LOAD '$docs_in' 
-    USING PigStorage('\t') 
-    AS ( url: chararray, pagerank: float, links:{ link: ( url: chararray ) } );
+    UPDATE = Pig.compile("""
+    -- PR(A) = (1-d) + d (PR(T1)/C(T1) + ... + PR(Tn)/C(Tn))
 
-outbound_pagerank =  
-    FOREACH previous_pagerank 
-    GENERATE 
-        pagerank / COUNT ( links ) AS pagerank, 
-        FLATTEN ( links ) AS to_url;
+    previous_pagerank = 
+        LOAD '$docs_in' 
+        USING PigStorage('\t') 
+        AS ( url: chararray, pagerank: float, links:{ link: ( url: chararray ) } );
 
-new_pagerank = 
-    FOREACH 
-        ( COGROUP outbound_pagerank BY to_url, previous_pagerank BY url INNER )
-    GENERATE 
-        group AS url, 
-        ( 1 - $d ) + $d * SUM ( outbound_pagerank.pagerank ) AS pagerank, 
-        FLATTEN ( previous_pagerank.links ) AS links;
-        
-STORE new_pagerank 
-    INTO '$docs_out' 
-    USING PigStorage('\t');
-""")
+    outbound_pagerank =  
+        FOREACH previous_pagerank 
+        GENERATE 
+            pagerank / COUNT ( links ) AS pagerank, 
+            FLATTEN ( links ) AS to_url;
 
-params = { 'd': '0.85', 'docs_in': 'gs://tppascal_bucket/out/pagerank_data_simple' }
+    new_pagerank = 
+        FOREACH 
+            ( COGROUP outbound_pagerank BY to_url, previous_pagerank BY url INNER )
+        GENERATE 
+            group AS url, 
+            ( 1 - $d ) + $d * SUM ( outbound_pagerank.pagerank ) AS pagerank, 
+            FLATTEN ( previous_pagerank.links ) AS links;
+            
+    STORE new_pagerank 
+        INTO '$docs_out' 
+        USING PigStorage('\t');
+    """)
 
-stats = INIT.bind(params).runSingle()
-if not stats.isSuccessful():
-      raise 'failed initialization'
+    params = { 'd': '0.85', 'docs_in': 'gs://tppascal_bucket/out/pagerank_data_simple' }
 
-with open(str(sys.argv[1]), 'w') as init_measure_file:
-   init_measure_file.write('run,exec_time\n')
+    stats = INIT.bind(params).runSingle()
+    if not stats.isSuccessful():
+        raise 'failed initialization'
 
-for i in range(3):
-   out = "gs://tppascal_bucket/out/pagerank_data_" + str(i + 1)
-   params["docs_out"] = out
-   Pig.fs("rmr " + out)
-   start_time = time()
-   stats = UPDATE.bind(params).runSingle()
-   execution_time = time() - start_time
-   report=str(i)+','+str(execution_time)+'\n'
-   with open(str(sys.argv[1]), 'a') as measures_file:
-      measures_file.write(report)
-   if not stats.isSuccessful():
-      raise 'failed'
-   params["docs_in"] = out
+    with open(str(sys.argv[1]), 'w') as init_measure_file:
+    init_measure_file.write('run,exec_time\n')
+
+    for i in range(3):
+    out = "gs://tppascal_bucket/out/pagerank_data_" + str(i + 1)
+    params["docs_out"] = out
+    Pig.fs("rmr " + out)
+    start_time = time()
+    stats = UPDATE.bind(params).runSingle()
+    execution_time = time() - start_time
+    report=str(i)+','+str(execution_time)+'\n'
+    with open(str(sys.argv[1]), 'a') as measures_file:
+        measures_file.write(report)
+    if not stats.isSuccessful():
+        raise 'failed'
+    params["docs_in"] = out
