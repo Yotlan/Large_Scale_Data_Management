@@ -51,7 +51,7 @@ for i in range(3):
    start_time = time()
    stats = UPDATE.bind(params).runSingle()
    execution_time = time() - start_time
-   report=str(f'{i},{execution_time}\n')
+   report=str(i)+','+str(execution_time)+'\n'
    with open(str(sys.argv[0]), 'a') as measures_file:
       measures_file.write(report)
    if not stats.isSuccessful():
