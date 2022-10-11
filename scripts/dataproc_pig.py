@@ -46,7 +46,7 @@ if __name__ == "__main__":
         raise 'failed initialization'
 
     with open('results/pig/pagerank_0.out', 'w') as init_measure_file:
-    init_measure_file.write('run,exec_time\n')
+        init_measure_file.write('run,exec_time\n')
 
     for i in range(3):
     out = "gs://tppascal_bucket/out/pagerank_data_" + str(i + 1)
