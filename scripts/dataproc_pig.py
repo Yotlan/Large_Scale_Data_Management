@@ -35,7 +35,7 @@ STORE new_pagerank
     USING PigStorage('\t');
 """)
 
-params = { 'd': '0.85', 'docs_in': 'gs://small_page_links/out/pagerank_data_simple' } # TODO
+params = { 'd': '0.85', 'docs_in': 'gs://tppascal_bucket/out/pagerank_data_simple' }
 
 stats = INIT.bind(params).runSingle()
 if not stats.isSuccessful():
@@ -45,7 +45,7 @@ with open(str(sys.argv[0]), 'w') as init_measure_file:
    init_measure_file.write('run,exec_time\n')
 
 for i in range(3):
-   out = "gs://small_page_links/out/pagerank_data_" + str(i + 1) # TODO
+   out = "gs://tppascal_bucket/out/pagerank_data_" + str(i + 1) # TODO
    params["docs_out"] = out
    Pig.fs("rmr " + out)
    start_time = time()
