@@ -45,7 +45,7 @@ if __name__ == "__main__":
     if not stats.isSuccessful():
         raise 'failed initialization'
 
-    with open(str(sys.argv[1]), 'w') as init_measure_file:
+    with open('results/pig/pagerank_0.out', 'w') as init_measure_file:
     init_measure_file.write('run,exec_time\n')
 
     for i in range(3):
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     stats = UPDATE.bind(params).runSingle()
     execution_time = time() - start_time
     report=str(i)+','+str(execution_time)+'\n'
-    with open(str(sys.argv[1]), 'a') as measures_file:
+    with open('results/pig/pagerank_0.out', 'a') as measures_file:
         measures_file.write(report)
     if not stats.isSuccessful():
         raise 'failed'
