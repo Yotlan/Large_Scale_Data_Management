@@ -45,7 +45,7 @@ with open(str(sys.argv[0]), 'w') as init_measure_file:
    init_measure_file.write('run,exec_time\n')
 
 for i in range(3):
-   out = "gs://tppascal_bucket/out/pagerank_data_" + str(i + 1) # TODO
+   out = "gs://tppascal_bucket/out/pagerank_data_" + str(i + 1)
    params["docs_out"] = out
    Pig.fs("rmr " + out)
    start_time = time()
