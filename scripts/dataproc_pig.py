@@ -1,6 +1,8 @@
 #!/usr/bin/python
 from org.apache.pig.scripting import *
 
+import sys
+
 INIT = Pig.compile("""
 A = LOAD 'gs://public_lddm_data/small_page_links.nt' using PigStorage(' ') as (url:chararray, p:chararray, link:chararray);
 B = GROUP A by url;                                                                                  
