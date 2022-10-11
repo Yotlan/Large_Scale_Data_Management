@@ -43,7 +43,7 @@ stats = INIT.bind(params).runSingle()
 if not stats.isSuccessful():
       raise 'failed initialization'
 
-with open(str(sys.argv[0]), 'w') as init_measure_file:
+with open(str(sys.argv[1]), 'w') as init_measure_file:
    init_measure_file.write('run,exec_time\n')
 
 for i in range(3):
@@ -54,7 +54,7 @@ for i in range(3):
    stats = UPDATE.bind(params).runSingle()
    execution_time = time() - start_time
    report=str(i)+','+str(execution_time)+'\n'
-   with open(str(sys.argv[0]), 'a') as measures_file:
+   with open(str(sys.argv[1]), 'a') as measures_file:
       measures_file.write(report)
    if not stats.isSuccessful():
       raise 'failed'
