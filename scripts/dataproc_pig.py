@@ -45,19 +45,11 @@ if __name__ == "__main__":
     if not stats.isSuccessful():
         raise 'failed initialization'
 
-    with open('results/pig/pagerank_0.out', 'w') as init_measure_file:
-        init_measure_file.write('run,exec_time\n')
-
     for i in range(3):
         out = "gs://tppascal_bucket/out/pagerank_data_" + str(i + 1)
         params["docs_out"] = out
         Pig.fs("rmr " + out)
-        start_time = time()
         stats = UPDATE.bind(params).runSingle()
-        execution_time = time() - start_time
-        report=str(i)+','+str(execution_time)+'\n'
-        with open('results/pig/pagerank_0.out', 'a') as measures_file:
-            measures_file.write(report)
         if not stats.isSuccessful():
             raise 'failed'
         params["docs_in"] = out

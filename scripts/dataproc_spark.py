@@ -75,24 +75,15 @@ if __name__ == "__main__":
     # Loads all URLs with other URL(s) link to from input file and initialize ranks of them to one.
     ranks = links.map(lambda url_neighbors: (url_neighbors[0], 1.0))
 
-    with open(str(sys.argv[3]), 'w') as init_measure_file:
-        init_measure_file.write('run,exec_time\n')
-
     # Calculates and updates URL ranks continuously using PageRank algorithm.
     for iteration in range(int(sys.argv[2])):
         # Calculates URL contributions to the rank of other URLs.
-        start_time = time()
         contribs = links.join(ranks).flatMap(lambda url_urls_rank: computeContribs(
             url_urls_rank[1][0], url_urls_rank[1][1]  # type: ignore[arg-type]
         ))
 
         # Re-calculates URL ranks based on neighbor contributions.
         ranks = contribs.reduceByKey(add).mapValues(lambda rank: rank * 0.85 + 0.15)
-        
-        execution_time = time() - start_time
-        report=f'{iteration},{execution_time}\n'
-        with open(str(sys.argv[3]), 'a') as measures_file:
-            measures_file.write(report)
 
     # Collects all URL ranks and dump them to console.
     for (link, rank) in ranks.collect():
