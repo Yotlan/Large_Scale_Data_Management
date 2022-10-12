@@ -8,7 +8,7 @@ gcloud dataproc clusters create cluster-a35a --enable-component-gateway --region
 ## 4 NODES
 gcloud dataproc clusters create cluster-a35a --enable-component-gateway --region europe-west1 --zone europe-west1-c --master-machine-type n1-standard-4 --master-boot-disk-size 500 --num-workers 4 --worker-machine-type n1-standard-4 --worker-boot-disk-size 500 --image-version 2.0-debian10 --project tppascal
 
-## COPY PIG CODE
+## COPY SPARK CODE
 gsutil cp dataproc_spark.py gs://tppascal_bucket/
 
 ## CLEAN OUT DIRECTORY

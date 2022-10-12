@@ -16,7 +16,7 @@ gsutil rm -rf gs://tppascal_bucket/out
 
 ## RUN
 ## SUPPOSE OUT DIRECTORY IS EMPTY
-gcloud dataproc jobs submit pig --region europe-west1 --cluster cluster-a35a gs://tppascal_bucket/dataproc_pig.py
+gcloud dataproc jobs submit pig --region europe-west1 --cluster cluster-a35a -f gs://tppascal_bucket/dataproc_pig.py
 
 ## ACCESS RESULTS
 gsutil cat gs://tppascal_bucket/out/pagerank_data_10/part-r-00000
