@@ -60,6 +60,7 @@ if __name__ == "__main__":
     spark = SparkSession\
         .builder\
         .appName("PythonPageRank")\
+        .config("spark.yarn.historyServer.allowTracking", "true")\
         .getOrCreate()
 
     # Loads in input file. It should be in format of:
