@@ -15,7 +15,7 @@ With gs://public_lddm_data/page_links_en.nt.bz2 :
 | Pig                       | 1                | 5 965 137            |
 | Pig                       | 2                | 2 926 194            |
 | Pig                       | 4                | 2 097 353            |
-| Pig                       | 5                | TODO                 |
+| Pig                       | 5                | 1 936 174            |
 | Spark                     | 1                | FAILED               |
 | Spark                     | 2                | 2 457 349            |
 | Spark                     | 4                | 1 755 194            |
