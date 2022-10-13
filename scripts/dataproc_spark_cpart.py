@@ -74,7 +74,7 @@ if __name__ == "__main__":
     lines = spark.read.text(sys.argv[1]).rdd.map(lambda r: r[0])
 
     # Loads all URLs from input file and initialize their neighbors.
-    links = lines.map(lambda urls: parseNeighbors(urls)).distinct().partitionBy(2).glom().groupByKey().cache()
+    links = lines.map(lambda urls: parseNeighbors(urls)).distinct().groupByKey().partitionBy(2).glom().cache()
 
     # Loads all URLs with other URL(s) link to from input file and initialize ranks of them to one.
     ranks = links.map(lambda url_neighbors: (url_neighbors[0], 1.0))
