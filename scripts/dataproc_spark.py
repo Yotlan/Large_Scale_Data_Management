@@ -61,6 +61,9 @@ if __name__ == "__main__":
         .builder\
         .appName("PythonPageRank")\
         .config("spark.yarn.historyServer.allowTracking", "true")\
+        .config("spark.executor.heartbeatInterval", "86400")\
+        .config("spark.network.timeout", "86400")\
+        .config("spark.ui.showConsoleProgress", "true")\
         .getOrCreate()
 
     # Loads in input file. It should be in format of:
