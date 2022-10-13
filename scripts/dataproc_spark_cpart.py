@@ -74,10 +74,10 @@ if __name__ == "__main__":
     lines = spark.read.text(sys.argv[1]).rdd.map(lambda r: r[0])
 
     # Loads all URLs from input file and initialize their neighbors.
-    links = lines.map(lambda urls: parseNeighbors(urls)).partitionBy(2).glom().distinct().groupByKey().cache()
+    links = lines.map(lambda urls: parseNeighbors(urls)).distinct().groupByKey().cache()
 
     # Loads all URLs with other URL(s) link to from input file and initialize ranks of them to one.
-    ranks = links.map(lambda url_neighbors: (url_neighbors[0], 1.0))
+    ranks = links.map(lambda url_neighbors: (url_neighbors[0], 1.0)).partitionBy(2).glom()
 
     # Calculates and updates URL ranks continuously using PageRank algorithm.
     for iteration in range(int(sys.argv[2])):
