@@ -18,7 +18,7 @@ With gs://public_lddm_data/page_links_en.nt.bz2 :
 | Spark                     | 1                | FAILED               |
 | Spark                     | 2                | 2 457 349            |
 | Spark                     | 4                | 1 755 194            |
-| Spark + Controlled Part.  | 1                | TODO                 |
+| Spark + Controlled Part.  | 1                | FAILED               |
 | Spark + Controlled Part.  | 2                | TODO                 |
 | Spark + Controlled Part.  | 4                | TODO                 |
 
