@@ -28,7 +28,7 @@
     "gs://public_lddm_data/small_page_links.nt" : {
         "pig" : {
             "execution_time" : {
-                "1" : 0,
+                "1" : 181134,
                 "2" : 0,
                 "4" : 0,
                 "5" : 0
@@ -36,7 +36,7 @@
         },
         "spark" : {
             "execution_time" : {
-                "1" : 0,
+                "1" : 16176,
                 "2" : 0,
                 "4" : 0,
                 "5" : 0
@@ -44,7 +44,7 @@
         },
         "spark_controlled_partitioning" : {
             "execution_time" : {
-                "1" : 0,
+                "1" : 13535,
                 "2" : 0,
                 "4" : 0,
                 "5" : 0

@@ -29,15 +29,15 @@ With gs://public_lddm_data/small_page_links.nt :
 
 | Page Rank implementation  | Number of nodes  | Execution time (ms)  |
 |---------------------------|------------------|----------------------|
-| Pig                       | 1                | TODO                 |
+| Pig                       | 1                | 181 134              |
 | Pig                       | 2                | TODO                 |
 | Pig                       | 4                | TODO                 |
 | Pig                       | 5                | TODO                 |
-| Spark                     | 1                | TODO                 |
+| Spark                     | 1                | 16 176               |
 | Spark                     | 2                | TODO                 |
 | Spark                     | 4                | TODO                 |
 | Spark                     | 5                | TODO                 |
-| Spark + Controlled Part.  | 1                | TODO                 |
+| Spark + Controlled Part.  | 1                | 13 535               |
 | Spark + Controlled Part.  | 2                | TODO                 |
 | Spark + Controlled Part.  | 4                | TODO                 |
 | Spark + Controlled Part.  | 5                | TODO                 |
