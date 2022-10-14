@@ -23,7 +23,7 @@ With gs://public_lddm_data/page_links_en.nt.bz2 :
 | Spark + Controlled Part.  | 1                | FAILED               |
 | Spark + Controlled Part.  | 2                | 1 507 807            |
 | Spark + Controlled Part.  | 4                | 1 504 586            |
-| Spark + Controlled Part.  | 5                | TODO                 |
+| Spark + Controlled Part.  | 5                | 1 469 502            |
 
 With gs://public_lddm_data/small_page_links.nt :
 
