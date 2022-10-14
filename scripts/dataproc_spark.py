@@ -90,9 +90,7 @@ if __name__ == "__main__":
         ranks = contribs.reduceByKey(add).mapValues(lambda rank: rank * 0.85 + 0.15)
 
     # Collects all URL ranks and dump them to console.
-    with open("grominet.txt",'w') as grominet:
-        for (link, rank) in ranks.collect():
-            print("%s has rank: %s." % (link, rank))
-            grominet.write("%s has rank: %s." % (link, rank))
+    for (link, rank) in ranks.collect():
+        print("%s has rank: %s." % (link, rank))
 
     spark.stop()
