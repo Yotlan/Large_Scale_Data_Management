@@ -36,15 +36,15 @@ With gs://public_lddm_data/small_page_links.nt :
 | Pig                       | 1                | 181 134              |
 | Pig                       | 2                | 164 404              |
 | Pig                       | 4                | 170 397              |
-| Pig                       | 5                | TODO                 |
+| Pig                       | 5                | 179 346              |
 | Spark                     | 1                | 16 176               |
 | Spark                     | 2                | 9 570                |
 | Spark                     | 4                | 9 431                |
-| Spark                     | 5                | TODO                 |
+| Spark                     | 5                | 9 503                |
 | Spark + Controlled Part.  | 1                | 13 535               |
 | Spark + Controlled Part.  | 2                | 8 173                |
 | Spark + Controlled Part.  | 4                | 8 591                |
-| Spark + Controlled Part.  | 5                | TODO                 |
+| Spark + Controlled Part.  | 5                | 7 810                |
 
 The plot for this amount of data is bellow :
 
