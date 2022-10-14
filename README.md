@@ -18,8 +18,8 @@ With gs://public_lddm_data/page_links_en.nt.bz2 :
 | Pig                       | 5                | 1 936 174            |
 | Spark                     | 1                | FAILED               |
 | Spark                     | 2                | 2 457 349            |
-| Spark                     | 4                | 1 755 194            |
-| Spark                     | 5                | 1 777 790            |
+| Spark                     | 4                | 1 777 790            |
+| Spark                     | 5                | 1 755 194            |
 | Spark + Controlled Part.  | 1                | FAILED               |
 | Spark + Controlled Part.  | 2                | 1 507 807            |
 | Spark + Controlled Part.  | 4                | 1 504 586            |

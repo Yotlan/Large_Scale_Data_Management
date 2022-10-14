@@ -1,89 +1,53 @@
 {
     "gs://public_lddm_data/page_links_en.nt.bz2" : {
         "pig" : {
-            "1" : {
-                "execution_time" : 5965137
-            },
-            "2" : {
-                "execution_time" : 2926194
-            },
-            "4" : {
-                "execution_time" : 2097353
-            },
-            "5" : {
-                "execution_time" : 1936174
+            "execution_time" : {
+                "1" : 5965137,
+                "2" : 2926194,
+                "4" : 2097353,
+                "5" : 1936174
             }
         },
         "spark" : {
-            "1" : {
-                "execution_time" : -1
-            },
-            "2" : {
-                "execution_time" : 2457349
-            },
-            "4" : {
-                "execution_time" : 1755194
-            },
-            "5" : {
-                "execution_time" : 1777790
+            "execution_time" : {
+                "1" : -1,
+                "2" : 2457349,
+                "4" : 1777790,
+                "5" : 1755194
             }
         },
         "spark_controlled_partitioning" : {
-            "1" : {
-                "execution_time" : -1
-            },
-            "2" : {
-                "execution_time" : 1507807
-            },
-            "4" : {
-                "execution_time" : 1504586
-            },
-            "5" : {
-                "execution_time" : 1469502
+            "execution_time" : {
+                "1" : -1,
+                "2" : 1507807,
+                "4" : 1504586,
+                "5" : 1469502
             }
         }
     },
     "gs://public_lddm_data/small_page_links.nt" : {
         "pig" : {
-            "1" : {
-                "execution_time" : 0
-            },
-            "2" : {
-                "execution_time" : 0
-            },
-            "4" : {
-                "execution_time" : 0
-            },
-            "5" : {
-                "execution_time" : 0
+            "execution_time" : {
+                "1" : 0,
+                "2" : 0,
+                "4" : 0,
+                "5" : 0
             }
         },
         "spark" : {
-            "1" : {
-                "execution_time" : 0
-            },
-            "2" : {
-                "execution_time" : 0
-            },
-            "4" : {
-                "execution_time" : 0
-            },
-            "5" : {
-                "execution_time" : 0
+            "execution_time" : {
+                "1" : 0,
+                "2" : 0,
+                "4" : 0,
+                "5" : 0
             }
         },
         "spark_controlled_partitioning" : {
-            "1" : {
-                "execution_time" : 0
-            },
-            "2" : {
-                "execution_time" : 0
-            },
-            "4" : {
-                "execution_time" : 0
-            },
-            "5" : {
-                "execution_time" : 0
+            "execution_time" : {
+                "1" : 0,
+                "2" : 0,
+                "4" : 0,
+                "5" : 0
             }
         }
     }
