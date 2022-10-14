@@ -94,4 +94,5 @@ if __name__ == "__main__":
         #print("%s has rank: %s." % (link, rank))
         with open("coco.txt","w") as file : 
              print("%s has rank: %s." % (link, rank))
+             file.write("%s has rank: %s." % (link, rank))
     spark.stop()
