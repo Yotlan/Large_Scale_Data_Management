@@ -49,3 +49,9 @@ With gs://public_lddm_data/small_page_links.nt :
 The plot for this amount of data is bellow :
 
 ![small_page_links.nt plot](img/small_page_links.nt.png)
+
+To get theses plot, you need to enter this command bellow :
+
+```py
+python3 scripts/dataproc_plot.py results/pagesrank.json img/
+```
