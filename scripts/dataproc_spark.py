@@ -89,10 +89,11 @@ if __name__ == "__main__":
         # Re-calculates URL ranks based on neighbor contributions.
         ranks = contribs.reduceByKey(add).mapValues(lambda rank: rank * 0.85 + 0.15)
 
+    # Save result
+    ranks.saveAsTextFile(str(sys.argv[3]))
+
     # Collects all URL ranks and dump them to console.
     for (link, rank) in ranks.collect():
-        #print("%s has rank: %s." % (link, rank))
-        with open("coco.txt","w") as file : 
-             print("%s has rank: %s." % (link, rank))
-             file.write("%s has rank: %s." % (link, rank))
+        print("%s has rank: %s." % (link, rank))
+
     spark.stop()

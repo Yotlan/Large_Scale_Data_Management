@@ -18,7 +18,7 @@ gsutil rm -rf gs://tppascal_bucket/out
 
 ## RUN
 ## SUPPOSE OUT DIRECTORY IS EMPTY
-gcloud dataproc jobs submit pyspark --region europe-west1 --cluster cluster-a35a gs://tppascal_bucket/dataproc_spark.py  -- gs://public_lddm_data/page_links_en.nt.bz2 3
+gcloud dataproc jobs submit pyspark --region europe-west1 --cluster cluster-a35a gs://tppascal_bucket/dataproc_spark.py  -- gs://public_lddm_data/page_links_en.nt.bz2 3 gs://tppascal_bucket/spark-out/
 
 ## ACCESS RESULTS
 gsutil cat gs://tppascal_bucket/out/pagerank_data_10/part-r-00000
