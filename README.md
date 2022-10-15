@@ -29,6 +29,14 @@ The plot for this amount of data is bellow :
 
 ![page_links_en.nt.bz2 plot](img/page_links_en.nt.bz2.png)
 
+To know which entity have the best pagerank score, you need to enter this command bellow :
+
+```py
+python3 scripts/dataproc_maxentity_pagerank.py results/page_links_en.nt.bz2.out
+```
+
+This command return `Entity '<http://dbpedia.org/resource/Attention-deficit_hyperactivity_disorder>' have the best pagerank with 0.30051150556157313`
+
 With gs://public_lddm_data/small_page_links.nt :
 
 | Page Rank implementation  | Number of nodes  | Execution time (ms)  |
@@ -49,6 +57,16 @@ With gs://public_lddm_data/small_page_links.nt :
 The plot for this amount of data is bellow :
 
 ![small_page_links.nt plot](img/small_page_links.nt.png)
+
+To know which entity have the best pagerank score, you need to enter this command bellow :
+
+```py
+python3 scripts/dataproc_maxentity_pagerank.py results/small_page_links.nt.out
+```
+
+This command return `Entity '<http://dbpedia.org/resource/Attention-deficit_hyperactivity_disorder>' have the best pagerank with 0.30051150556157313`
+
+### PLOTTING RESULTS
 
 To get theses plot, you need to enter this command bellow :
 
