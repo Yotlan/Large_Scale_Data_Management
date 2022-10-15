@@ -35,7 +35,7 @@ To know which entity have the best pagerank score, you need to enter this comman
 python3 scripts/dataproc_maxentity_pagerank.py results/page_links_en.nt.bz2.out
 ```
 
-This command return `Entity '<http://dbpedia.org/resource/Attention-deficit_hyperactivity_disorder>' have the best pagerank with 0.30051150556157313`
+This command return `Entity '<http://dbpedia.org/resource/Living_people>' have the best pagerank with 36794.331467544755`
 
 With gs://public_lddm_data/small_page_links.nt :
 
