@@ -1,0 +1,5 @@
+SELECT *
+WHERE {
+    ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://schema.org/Mountain> .
+    ?s <https://schema.org/name> ?n .FILTER( strStarts( ?n , "\"P" ) ) .
+}

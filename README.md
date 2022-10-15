@@ -73,3 +73,29 @@ To get theses plot, you need to enter this command bellow :
 ```py
 python3 scripts/dataproc_plot.py results/pagesrank.json img/
 ```
+
+## SPARQL TO PYSPARK
+
+An example of what we want :
+
+```py
+# select * where {
+#    ?s isa Mountain . #tp1
+#    ?s name ?n . #tp2
+#    filter   (?n startwith "p")
+# }
+
+tp1=triples.filter(lambda x: x[1]=="<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>" \
+               and  x[2]=="<https://schema.org/Mountain>").keyBy(lambda x: x[0])
+tp2=triples.filter(lambda x: x[1]=="<https://schema.org/name>" \
+                   and x[2].startswith("\"P")).keyBy(lambda x: x[0])
+tp1.join(tp2).distinct().count()
+```
+
+Here you take a SPARQL query and you translate it into a PySpark query with the command bellow :
+
+```py
+python3 scripts/sparql2pyspark.py results/query.sparql results/query.py
+```
+
+**YOU NEED TO FOLLOW THE SCHEMA LIKE THE FILE query.sparql !**
